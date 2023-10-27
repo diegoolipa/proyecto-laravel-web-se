@@ -24,8 +24,9 @@
                 <th scope="col">Documento</th>
                 <th scope="col">Celular</th>
                 <th scope="col">Foto</th>
-                <th scope="col" class="text-center">Opciones</th>
+                <th scope="col" class="text-center">Opcionesdddddgit </th>
                 </tr>
+
             </thead>
             <tbody>
                 @foreach($personas as $persona)
