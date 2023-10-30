@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,14 @@ Route::get('/nueva-ruta', function () {
 });
 
 Route::get('/lista-personas', function(){
+    try{
+        DB::connection()->getPdo();
+        toast('Success Toast','success');
+    }catch(Exception $ex){
+        //toast('Success Toast','error');
+        alert()->error('Error', $ex->getMessage())->toToast();
+    }
+
     $personas = [
         [
             "personaID" => "1",
