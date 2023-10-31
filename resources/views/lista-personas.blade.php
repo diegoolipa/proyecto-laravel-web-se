@@ -43,10 +43,13 @@
                             alt="Foto de persona"> 
                         </td>
                         <td class="" style="text-align: center;">
-                            <button type="button" class="btn btn-warning">Detalles</button>
-                            <button type="button" class="btn btn-info">Editar</button>
-                            <button type="button" class="btn btn-danger">Eliminar</button>
-
+                            <a href="{{ route('mostrar-personas', $persona['personaID']) }}"
+                            type="button"
+                             class="btn btn-warning">Detalles
+                            </a>
+                            <a href="{{ route('mostrar-personas', $persona['personaID']) }}"
+                            type="button" class="btn btn-info">Editar</a>
+                            <a type="button" class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
                 @endforeach
