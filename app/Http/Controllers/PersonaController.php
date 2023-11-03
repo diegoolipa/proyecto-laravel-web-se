@@ -8,8 +8,9 @@ class PersonaController extends Controller
 {
     public function listarPersona(){
         try{
-            DB::connection()->getPdo();
-            toast('Success Toast','success');
+            DB::connection()->getPDO();
+            $nombre_dn = DB::connection()->getDatabaseName();
+            alert()->success('Exitoso', $nombre_dn)->toToast();
         }catch(Exception $ex){
             //toast('Success Toast','error');
             alert()->error('Error', $ex->getMessage())->toToast();

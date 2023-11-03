@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PersonaController;
+use App\Http\Controllers\PaginaWebController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,3 +30,11 @@ Route::get('/lista-personas',
 Route::get('/lista-personas/{id_persona}',
 [PersonaController::class, 'mostrarPersona']
 )->name('mostrar-personas');
+
+
+//------------------------------------------------------------------------------
+//Pagina web
+Route::get('/pagina-web',
+[PaginaWebController::class, 'verPaginaWeb']
+)->name('pagina-web');
+//------------------------------------------------------------------------------
