@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\PaginaWebController;
+use App\Http\Controllers\RegistroPersonaWebController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +38,10 @@ Route::get('/lista-personas/{id_persona}',
 //Pagina web
 Route::get('/pagina-web',
 [PaginaWebController::class, 'verPaginaWeb']
-)->name('pagina-web');
+)->name('pagina.web');
+
+Route::get('/pagina-web/registro-persona',
+[RegistroPersonaWebController::class, 'registroPersona']
+)->name('registro.persona');
+
 //------------------------------------------------------------------------------
