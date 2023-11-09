@@ -558,6 +558,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</span>
 	</div>
 
+	@include('sweetalert::alert')
+
 <!--===============================================================================================-->	
 	<script src="{{ asset('web/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
 <!--===============================================================================================-->

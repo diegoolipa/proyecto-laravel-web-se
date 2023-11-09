@@ -44,4 +44,8 @@ Route::get('/pagina-web/registro-persona',
 [RegistroPersonaWebController::class, 'registroPersona']
 )->name('registro.persona');
 
+Route::post('/pagina-web/guardar-persona',
+[RegistroPersonaWebController::class, 'guardarPersona']
+)->name('guardar.persona');
+
 //------------------------------------------------------------------------------
