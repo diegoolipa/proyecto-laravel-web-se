@@ -25,20 +25,27 @@ Route::get('/nueva-ruta', function () {
     return view('vistaDos');
 });
 
+//------------------------------------------------------------------------------
+//Listar Persona
 Route::get('/lista-personas',
  [PersonaController::class, 'listarPersona']
 )->name('lista-personas');
 
+Route::delete('/eliminar-persona/{id_persona}',
+ [PersonaController::class, 'eliminarPersona']
+)->name('eliminar.persona');
+
 Route::get('/lista-personas/{id_persona}',
 [PersonaController::class, 'mostrarPersona']
 )->name('mostrar-personas');
+//------------------------------------------------------------------------------
 
 
 //------------------------------------------------------------------------------
 //Pagina web
 Route::get('/pagina-web',
 [PaginaWebController::class, 'verPaginaWeb']
-)->name('pagina.web');
+)->name('pagina.web'); //funciona
 
 Route::get('/pagina-web/registro-persona',
 [RegistroPersonaWebController::class, 'registroPersona']

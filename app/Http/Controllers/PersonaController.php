@@ -13,7 +13,8 @@ class PersonaController extends Controller
         if($mensaje){
             alert()->success('Operación exitosa!!!', $mensaje)->toToast();
         }
-        $personas = Persona::all();
+        $personas = Persona::all(); //sql nativo
+        //dd($personas);
         //alert()->success('Operación exitosa!!!', 'Lista personas')->toToast();
         return view('lista-personas',compact('personas'));
     }
@@ -21,5 +22,17 @@ class PersonaController extends Controller
     public function mostrarPersona(Request $request, $id_persona){
         //dd($request);
         return view('mostrar-persona', compact('id_persona'));
+    }
+
+    public function eliminarPersona(Request $request, $id_persona){
+        //dd($id_persona); //1 //6
+        $persona = Persona::find($id_persona);
+        $persona->delete();
+
+        return redirect()
+        ->route('lista-personas')
+        ->with('mensaje','Persona eliminada corectamente !!!');
+
+        //dd($persona);   
     }
 }
