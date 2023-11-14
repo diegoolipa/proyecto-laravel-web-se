@@ -7,13 +7,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
     <div class="container"> 
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
         <h1>Lista Personas</h1>
-        @foreach($personas as $persona)
-            <p>{{ $persona['nombres'] }} {{ $persona['paterno'] }} {{ $persona['materno'] }}</p>
-
-        @endforeach
+        <a type="button" href="{{ route('registro.persona') }}" class="btn btn-primary">Registrar Nueva Persona</a>
         <table class="table">
             <thead>
                 <tr>
@@ -41,7 +73,7 @@
                         <td>{{ $persona['celular'] }}</td>
                         <td><img 
                             style="height:50px" 
-                            src="{{ $persona['foto'] }}" 
+                            src="{{asset('storage/'.$persona['foto'])}}" 
                             alt="Foto de persona"> 
                         </td>
                         <td class="" style="text-align: center;">
@@ -50,8 +82,8 @@
                              class="btn btn-warning">Detalles
                             </a>
 
-                            <a href="{{ route('mostrar-personas', $persona['personaID']) }}"
-                            type="button" class="btn btn-info">Editar</a>
+                            <button onclick="diego()"
+                            type="button" class="btn btn-info">Editar</button>
                             
 
                             <form action="{{ route('eliminar.persona', $persona['personaID']) }}" method="POST">
@@ -68,5 +100,12 @@
     </div>
 </body>
 @include('sweetalert::alert')
+
+<script>
+    function diego(){
+        console.log('Diego diego');
+    }
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>

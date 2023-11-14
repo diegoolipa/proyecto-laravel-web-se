@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\PaginaWebController;
 use App\Http\Controllers\RegistroPersonaWebController;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,3 +57,10 @@ Route::post('/pagina-web/guardar-persona',
 )->name('guardar.persona');
 
 //------------------------------------------------------------------------------
+
+
+Route::get('/pdf', function () {
+    $pdf = App::make('dompdf.wrapper');
+    $pdf->loadHTML('<h1>Test</h1>');
+    return $pdf->stream();
+});
