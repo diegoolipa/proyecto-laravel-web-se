@@ -45,7 +45,12 @@
       </nav>
     <div class="container"> 
         <h1>Lista Personas</h1>
-        <a type="button" href="{{ route('registro.persona') }}" class="btn btn-primary">Registrar Nueva Persona</a>
+        <a type="button" href="{{ route('registro.persona') }}" 
+            class="btn btn-primary">Registrar Nueva Persona
+        </a>
+        <a type="button" target="_blank" href="{{ route('pdf.personas') }}" 
+            class="btn btn-info">Exportar PDF
+        </a>
         <table class="table">
             <thead>
                 <tr>
@@ -76,20 +81,21 @@
                             src="{{asset('storage/'.$persona['foto'])}}" 
                             alt="Foto de persona"> 
                         </td>
-                        <td class="" style="text-align: center;">
-                            <a href="{{ route('mostrar-personas', $persona['personaID']) }}"
+                        <td class="d-flex" style="text-align: center;">
+                            <a href="{{ route('mostrar.persona', $persona['personaID']) }}"
                             type="button"
-                             class="btn btn-warning">Detalles
+                             class="btn btn-warning me-2">Detalles
                             </a>
 
-                            <button onclick="diego()"
-                            type="button" class="btn btn-info">Editar</button>
+                            <a href="{{ route('editar.persona', $persona['personaID']) }}"
+                            type="button"
+                             class="btn btn-warning me-2">Editar
+                            </a>
                             
-
                             <form action="{{ route('eliminar.persona', $persona['personaID']) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                <button type="submit" class="btn btn-danger me-2">Eliminar</button>
                             </form>
                         </td>
                     </tr>

@@ -6,7 +6,7 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\PaginaWebController;
 use App\Http\Controllers\RegistroPersonaWebController;
 use Illuminate\Support\Facades\App;
-
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,9 +36,18 @@ Route::delete('/eliminar-persona/{id_persona}',
  [PersonaController::class, 'eliminarPersona']
 )->name('eliminar.persona');
 
-Route::get('/lista-personas/{id_persona}',
+Route::get('/mostrar-persona/{id_persona}',
 [PersonaController::class, 'mostrarPersona']
-)->name('mostrar-personas');
+)->name('mostrar.persona');
+
+Route::get('/editar-persona/{id_persona}',
+[PersonaController::class, 'editarPersona']
+)->name('editar.persona');
+
+Route::put('/actualizar-persona/{id_persona}',
+[PersonaController::class, 'actualizarPersona']
+)->name('actualizar.persona');
+
 //------------------------------------------------------------------------------
 
 
@@ -59,8 +68,10 @@ Route::post('/pagina-web/guardar-persona',
 //------------------------------------------------------------------------------
 
 
-Route::get('/pdf', function () {
-    $pdf = App::make('dompdf.wrapper');
-    $pdf->loadHTML('<h1>Test</h1>');
-    return $pdf->stream();
-});
+//------------------------------------------------------------------------------
+//Exportar pdf
+Route::get('/pdf-personas',
+[PdfController::class, 'exportarPdfPersonas']
+)->name('pdf.personas');
+
+//------------------------------------------------------------------------------
